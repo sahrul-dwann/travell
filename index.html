@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Travel</title>
+    <!-- tailwind css -->
+    <link rel="stylesheet" href="./src/tailwind.css" />
+
+    <!-- alpine js -->
+    <script src="//unpkg.com/alpinejs" defer></script>
+  </head>
+  <body>
+    <!-- Navigation Bar start -->
+    <nav class="py-7 px-4" x-data="{navOpen: true}">
+      <div class="container mx-auto">
+        <div class="flex items-center justify-between">
+          <img
+            src="./public/asset/logo.svg"
+            alt="logo"
+            class="order-1 sm:order-2"
+          />
+          <img
+            @click="navOpen = !navOpen"
+            src="./public/asset/hamburger.svg"
+            alt="hamburger-menu"
+            class="order-2 sm:order-1 lg:hidden"
+          />
+
+          <div class="order-2 hidden lg:block">
+            <ul class="flex gap-16">
+              <li
+                class="text-grey hover:text-ungu font-bold text-sm font-circular"
+              >
+                <a href="">Home</a>
+              </li>
+              <li
+                class="text-grey hover:text-ungu font-bold text-sm font-circular"
+              >
+                <a href="">Discover</a>
+              </li>
+              <li
+                class="text-grey hover:text-ungu font-bold text-sm font-circular"
+              >
+                <a href="">Special Deals</a>
+              </li>
+              <li
+                class="text-grey hover:text-ungu font-bold text-sm font-circular"
+              >
+                <a href="">Contact</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="order-3 hidden sm:block">
+            <button
+              class="grow bg-white px-8 py-4 font-bold text-grey rounded-full text-sm"
+            >
+              Login
+            </button>
+            <button
+              class="grow bg-ungu px-8 py-4 font-bold text-white rounded-full text-sm"
+            >
+              Sign Up
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div
+        x-show="navOpen"
+        x-data="{open : false}"
+        class="z-50 fixed bottom-0 right-0 left-0 bg-gray-200 p-4 lg:hidden"
+        x-transition:enter="transition ease-out
+        duration-300"
+        x-transition:enter-start="opacity-0 scale-90"
+        x-transition:enter-end="opacity-100 scale-100"
+        x-transition:leave="transition ease-in duration-300"
+        x-transition:leave-start="opacity-100 scale-100"
+        x-transition:leave-end="opacity-0 scale-90"
+      >
+        <ul class="flex justify-between">
+          <li>
+            <button
+              class="flex justify-center flex-col items-center gap-1 text-ungu"
+            >
+              <ion-icon name="home-outline" class="text-2xl"></ion-icon>
+              <span class="text-base font-bold">Home</span>
+            </button>
+          </li>
+          <li>
+            <button
+              class="text-grey opacity-60 flex justify-center flex-col items-center gap-1"
+            >
+              <ion-icon name="albums-outline" class="text-2xl"></ion-icon>
+              <span class="text-base font-normal">Discover</span>
+            </button>
+          </li>
+          <li>
+            <button
+              class="text-grey opacity-60 flex justify-center flex-col items-center gap-1"
+            >
+              <ion-icon name="sparkles-outline" class="text-2xl"></ion-icon>
+              <span class="text-base font-normal">Special</span>
+            </button>
+          </li>
+          <li>
+            <button
+              class="text-grey opacity-60 flex justify-center flex-col items-center gap-1"
+            >
+              <ion-icon name="megaphone-outline" class="text-2xl"></ion-icon>
+              <span class="text-base font-normal">Contact</span>
+            </button>
+          </li>
+          <li>
+            <button
+              @click="open = !open "
+              class="text-grey opacity-60 flex justify-center flex-col items-center gap-1"
+            >
+              <ion-icon name="menu-outline" class="text-2xl"></ion-icon>
+              <span class="text-base font-normal">More</span>
+            </button>
+          </li>
+        </ul>
+
+        <div
+          x-show="open"
+          class="absolute bottom-24 left-1/2 -translate-x-1/2 flex gap-4 w-3/4"
+          x-transition:enter="transition ease-out duration-300"
+          x-transition:enter-start="opacity-0 scale-90"
+          x-transition:enter-end="opacity-100 scale-100"
+          x-transition:leave="transition ease-in duration-300"
+          x-transition:leave-start="opacity-100 scale-100"
+          x-transition:leave-end="opacity-0 scale-90"
+        >
+          <button
+            class="grow bg-white px-8 py-4 font-bold text-grey rounded-full text-sm"
+          >
+            Login
+          </button>
+          <button
+            class="grow bg-ungu px-8 py-4 font-bold text-white rounded-full text-sm"
+          >
+            Sign Up
+          </button>
+        </div>
+      </div>
+    </nav>
+    <!-- Navigation Bar end -->
+
+    <!-- Hero Section start -->
+    <section>
+      <div class="container mx-auto px-4 py-4 lg:py-16">
+        <div class="grid grid-cols-12 items-center">
+          <div class="col-span-12 lg:col-span-4 order-2 lg:order-1">
+            <div class="">
+              <button
+                class="px-8 py-4 bg-white text-pink flex gap-2 text-sm font-bold drop-shadow-sm-shadow rounded-full mx-auto lg:mx-0"
+              >
+                Explore the world!
+                <img src="./public/asset/icon/work.svg" alt="" />
+              </button>
+              <h1
+                class="mt-4 mb-6 font-bold text-[40px] text-grey leading-tight text-center md:text-[52px] md:mb-[43px] md:mt-[43px] lg:text-[69px] lg:text-start"
+              >
+                Travel <span class="text-pink">top destination</span> of the
+                world
+              </h1>
+              <p
+                class="mb-8 md:mb-[43px] text-center text-grey opacity-50 text-base font-inter md:text-[18px] md:w-3/4 mx-auto lg:w-full lg:text-start"
+              >
+                We always make our customer happy by providing as many choices
+                as possible
+              </p>
+              <div
+                class="flex flex-col md:flex-row justify-center gap-6 lg:justify-start"
+              >
+                <button
+                  class="py-4 px-8 bg-ungu drop-shadow-2xl text-white rounded-full text-sm font-bold"
+                >
+                  Get Started
+                </button>
+                <button
+                  class="justify-center items-center z-10 flex gap-2 py-4 px-8 bg-white border border-[#EEEEEE] rounded-full text-sm font-bold"
+                >
+                  <img src="./public/asset/icon/play.svg" alt="" />
+                  Watch Demo
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-span-12 lg:col-span-8 order-1 lg:order-2 text-center">
+            <div>
+              <img src="./public/asset/hero.png" class="w-full" alt="" />
+            </div>
+          </div>
+          <div class="col-span-12 order-3 py-8">
+            <div
+              class="flex justify-center gap-6 sm:gap-7 lg:justify-between flex-wrap"
+            >
+              <div>
+                <img
+                  src="./public/asset/logo/tripadvisor.svg"
+                  class="h-5 sm:h-8"
+                  alt=""
+                />
+              </div>
+              <div>
+                <img
+                  src="./public/asset/logo/expedia.svg"
+                  class="h-5 sm:h-8"
+                  alt=""
+                />
+              </div>
+              <div>
+                <img
+                  src="./public/asset/logo/booking.svg"
+                  class="h-5 sm:h-8"
+                  alt=""
+                />
+              </div>
+              <div>
+                <img
+                  src="./public/asset/logo/airbnb.svg"
+                  class="h-5 sm:h-8"
+                  alt=""
+                />
+              </div>
+              <div>
+                <img
+                  src="./public/asset/logo/rbitz.svg"
+                  class="h-5 sm:h-8"
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Hero Section end -->
+
+    <!-- service section start -->
+    <section class="py-16 overflow-x-hidden">
+      <div class="container mx-auto px-3">
+        <div class="grid grid-cols-12 items-center">
+          <div class="lg:col-span-4 col-span-12 flex gap-4 flex-col">
+            <span
+              class="text-pink font-bold leading-tight text-center lg:text-start text-base sm:text-2xl"
+              >SERVICE</span
+            >
+            <h1
+              class="font-bold sm:text-5xl text-3xl leading-tight text-grey text-center lg:text-start"
+            >
+              Our top value categories for you
+            </h1>
+          </div>
+          <div
+            class="lg:col-span-8 col-span-12 flex flex-col sm:flex-row gap-5 lg:w-screen sm:w-auto sm:mt-16 lg:mt-0 mt-8"
+          >
+            <div
+              class="flex justify-center gap-14 flex-col items-center w-full sm:w-[350px] rounded-[32px] border border-gray-500 lg:p-16 p-10 bg-white"
+            >
+              <div>
+                <img src="./public/asset/icon/destination.png" alt="" />
+              </div>
+              <div class="flex gap-8 flex-col">
+                <h2 class="font-bold text-grey text-lg text-center">
+                  Best Tour Guide
+                </h2>
+                <p
+                  class="font-inter text-lg leading-relaxed text-grey opacity-50 text-center"
+                >
+                  What looked like a small patch of purple grass, above five
+                  feet.
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="flex justify-center gap-14 flex-col items-center w-full sm:w-[350px] rounded-[32px] border border-gray-500 lg:p-16 p-10 drop-shadow-sm-shadow bg-white"
+            >
+              <div>
+                <img src="./public/asset/icon/booking.png" alt="" />
+              </div>
+              <div class="flex gap-8 flex-col">
+                <h2 class="font-bold text-grey text-lg text-center">
+                  Easy Booking
+                </h2>
+                <p
+                  class="font-inter text-lg leading-relaxed text-grey opacity-50 text-center"
+                >
+                  Square, was moving across the sand in their direction.
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="flex justify-center gap-14 flex-col items-center w-full sm:w-[350px] rounded-[32px] border border-gray-500 lg:p-16 p-10 bg-white"
+            >
+              <div class="">
+                <img src="./public/asset/icon/cloudy.png" alt="" />
+              </div>
+              <div class="flex gap-8 flex-col">
+                <h2 class="font-bold text-grey text-lg text-center">
+                  Weather Forecast
+                </h2>
+                <p
+                  class="font-inter text-lg leading-relaxed text-grey opacity-50 text-center"
+                >
+                  What looked like a small patch of purple grass, above five
+                  feet.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- service section end -->
+
+    <!-- destination section start -->
+    <section class="py-8">
+      <div class="container mx-auto">
+        <div class="items-center">
+          <div class="flex gap-4 flex-col">
+            <span
+              class="text-pink font-bold leading-tight text-center uppercase text-base sm:text-2xl"
+              >Top Destination</span
+            >
+            <h1
+              class="font-bold sm:text-5xl text-4xl leading-tight text-grey text-center"
+            >
+              Explore top destination
+            </h1>
+          </div>
+
+          <div
+            class="gap-12 flex justify-center flex-col md:flex-row rounded-2xl mt-10"
+          >
+            <!-- destination 1 -->
+            <div
+              class="flex justify-center flex-col w-full rounded-[32px] bg-white drop-shadow-2xl"
+            >
+              <div class="w-full h-[300px]">
+                <img
+                  src="./public/asset/destination/paradise.png"
+                  class="w-full h-full"
+                  alt=""
+                />
+              </div>
+
+              <div class="m-5 drop-shadow-sm-shadow">
+                <span class="text-pink font-circular text-2xl leading-tight"
+                  >$550.16</span
+                >
+                <p
+                  class="font-bold font-circular text-2xl leading-tight mt-3 mb-4"
+                >
+                  Paradise Beach, Bantayan Island
+                </p>
+                <p class="text-grey opacity-50 mb-10">Rome, Italy</p>
+                <p class="text-orange-500 font-bold text-lg">4.8⭐</p>
+              </div>
+            </div>
+
+            <!-- destination 2 -->
+            <div
+              class="flex justify-center flex-col w-full rounded-[32px] bg-white drop-shadow-2xl"
+            >
+              <div class="w-full h-[300px]">
+                <img
+                  src="./public/asset/destination/ocean.png"
+                  class="w-full h-full"
+                  alt=""
+                />
+              </div>
+
+              <div class="m-5 drop-shadow-sm-shadow">
+                <span class="text-pink font-circular text-2xl leading-tight"
+                  >$20.99</span
+                >
+                <p
+                  class="font-bold font-circular text-2xl leading-tight mt-3 mb-4"
+                >
+                  Ocean with full of Colors
+                </p>
+                <p class="text-grey opacity-50 mb-10">Maldives</p>
+                <p class="text-orange-500 font-bold text-lg">4.6⭐</p>
+              </div>
+            </div>
+
+            <!-- destination 3 -->
+            <div
+              class="flex justify-center flex-col w-full rounded-[32px] bg-white drop-shadow-2xl"
+            >
+              <div class="w-full h-[300px]">
+                <img
+                  src="./public/asset/destination/Mountain-View.png"
+                  class="w-full h-full"
+                  alt=""
+                />
+              </div>
+
+              <div class="m-5 drop-shadow-sm-shadow">
+                <span class="text-pink font-circular text-2xl leading-tight"
+                  >$150.99</span
+                >
+                <p
+                  class="font-bold font-circular text-2xl leading-tight mt-3 mb-4"
+                >
+                  Mountain View, Above the cloud
+                </p>
+                <p class="text-grey opacity-50 mb-10">United Arab Emeries</p>
+                <p class="text-orange-500 font-bold text-lg">5.0⭐</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- destination section end -->
+
+    <!-- travel point section start -->
+    <section class="py-10">
+      <div class="container mx-auto">
+        <div class="grid grid-cols-12 items-center">
+          <div class="col-span-12 lg:col-span-8 items-start">
+            <div class="">
+              <img src="./public/asset/travell-point/travel-point.png" alt="" />
+            </div>
+          </div>
+          <div
+            class="col-span-12 lg:col-span-4 gap-6 flex flex-col mt-10 text-center"
+          >
+            <p
+              class="font-bold uppercase text-pink text-lg md:text-2xl leading-tight text-center lg:text-start"
+            >
+              Travel Point
+            </p>
+            <h1
+              class="font-bold uppercase text-3xl md:text-[40px] text-center lg:text-start"
+            >
+              We helping you find your dream location
+            </h1>
+            <p
+              class="text-base md:text-[18px] text-grey opacity-50 text-center lg:text-start"
+            >
+              Contrary to popular belief, Lorem Ipsum is not simply random text.
+              It has roots in a piece of classical Latin literature from 45 BC.
+            </p>
+
+            <div
+              class="gap-4 flex flex-col items-center md:flex-row xl:gap-8 flex-wrap justify-center"
+            >
+              <div
+                class="flex justify-center flex-col gap-4 items-center w-full sm:w-[350px] lg:w-[160px] 2xl:w-[200px] rounded-[32px] border border-[#EEEEEE] bg-white"
+              >
+                <div class="mx-auto mt-10">
+                  <img
+                    src="./public/asset/travell-point/500+.png"
+                    class="w-[65px] h-8"
+                    alt=""
+                  />
+                </div>
+                <p class="text-lg text-center mb-10">Holiday Package</p>
+              </div>
+              <div
+                class="flex justify-center flex-col gap-4 items-center w-full sm:w-[350px] lg:w-[160px] 2xl:w-[200px] rounded-[32px] border border-[#EEEEEE] bg-white"
+              >
+                <div class="mx-auto mt-10">
+                  <img
+                    src="./public/asset/travell-point/100.png"
+                    class="w-[60px] h-8"
+                    alt=""
+                  />
+                </div>
+                <p class="text-lg text-center mb-10">Luxury Hotel</p>
+              </div>
+              <div
+                class="flex justify-center flex-col gap-4 items-center w-full sm:w-[350px] lg:w-[160px] 2xl:w-[200px] rounded-[32px] border border-[#EEEEEE] bg-white"
+              >
+                <div class="mx-auto mt-10">
+                  <img
+                    src="./public/asset/travell-point/7.png"
+                    class="w-[30px] h-9"
+                    alt=""
+                  />
+                </div>
+                <p class="text-lg text-center mb-10">Premium Airlines</p>
+              </div>
+              <div
+                class="flex justify-center flex-col gap-4 items-center w-full sm:w-[350px] lg:w-[160px] 2xl:w-[200px] rounded-[32px] border border-[#EEEEEE] bg-white"
+              >
+                <div class="mx-auto mt-10">
+                  <img
+                    src="./public/asset/travell-point/2k+.png"
+                    class="w-[60px] h-8"
+                    alt=""
+                  />
+                </div>
+                <p class="text-lg text-center mb-10">Premium Airlines</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- travel point section end -->
+
+    <!-- best service section start -->
+    <section>
+      <div class="container mx-auto px-4 py-4 lg:py-16">
+        <div class="grid grid-cols-12 items-center lg:gap-18">
+          <div class="col-span-12 lg:col-span-5 order-2 lg:order-1">
+            <div class="">
+              <p
+                class="text-base md:text-lg mt-16 uppercase mb-4 font-bold leading-tight text-center lg:text-start text-pink lg:mt-4"
+              >
+                Key features
+              </p>
+              <h1
+                class="mt-4 mb-4 font-bold text-[40px] text-grey leading-tight text-center md:mb-[20px] md:mt-[30px] lg:text-start"
+              >
+                We offer <span class="text-pink">best services</span>
+              </h1>
+              <p
+                class="mb-8 md:mb-[30px] text-center text-grey opacity-50 text-base font-inter md:text-[18px] md:w-3/4 mx-auto lg:w-full lg:text-start"
+              >
+                Contrary to popular belief, Lorem Ipsum is not simply random
+                text. It has roots in a piece of classical Latin literature from
+                45 BC.
+              </p>
+            </div>
+
+            <div class="flex flex-col gap-5 sm:w-auto sm:mt-16 lg:mt-0 mt-8">
+              <div
+                class="flex justify-center gap-8 flex-col items-center w-full rounded-[32px] border border-[#EEEEEE] p-10 md:flex-row bg-white md:justify-start"
+              >
+                <div
+                  class="bg-oren w-[100px] lg:w-[110px] h-[100px] rounded-4xl items-center justify-center flex"
+                >
+                  <img
+                    src="./public/asset/best-service/map.svg"
+                    class="w-10 h-8"
+                    alt=""
+                  />
+                </div>
+                <div class="flex gap-4 flex-col">
+                  <h2
+                    class="font-bold text-grey text-lg text-center md:text-start"
+                  >
+                    We offer best services
+                  </h2>
+                  <p
+                    class="font-inter text-lg leading-relaxed text-grey opacity-50 text-center md:text-start"
+                  >
+                    What looked like a small patch
+                  </p>
+                </div>
+              </div>
+
+              <div
+                class="flex justify-center gap-8 flex-col items-center w-full rounded-[32px] border border-[#EEEEEE] p-10 md:flex-row bg-white md:justify-start"
+              >
+                <div
+                  class="bg-yellow-300 w-[100px] lg:w-[110px] h-[100px] rounded-4xl items-center justify-center flex"
+                >
+                  <img
+                    src="./public/asset/best-service/calendar.svg"
+                    class="w-10 h-8"
+                    alt=""
+                  />
+                </div>
+                <div class="flex gap-4 flex-col">
+                  <h2
+                    class="font-bold text-grey text-lg text-center md:text-start"
+                  >
+                    Schedule your trip
+                  </h2>
+                  <p
+                    class="font-inter text-lg leading-relaxed text-grey opacity-50 text-center md:text-start"
+                  >
+                    It has roots in a piece of classical
+                  </p>
+                </div>
+              </div>
+
+              <div
+                class="flex justify-center gap-8 flex-col items-center w-full rounded-[32px] border border-[#EEEEEE] p-10 md:flex-row bg-white md:justify-start"
+              >
+                <div
+                  class="bg-pink w-[100px] lg:w-[110px] h-[100px] rounded-4xl items-center justify-center flex"
+                >
+                  <img
+                    src="./public/asset/best-service/tiket.png"
+                    alt=""
+                    class="w-10 h-8"
+                  />
+                </div>
+                <div class="flex gap-4 flex-col">
+                  <h2
+                    class="font-bold text-grey text-lg text-center md:text-start"
+                  >
+                    Get discounted coupons
+                  </h2>
+                  <p
+                    class="font-inter text-lg leading-relaxed text-grey opacity-50 text-center md:text-start"
+                  >
+                    It has roots in a piece of classical
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-span-12 lg:col-span-7 order-1 lg:order-2 text-center">
+            <div>
+              <img
+                src="./public/asset/best-service/background-best-service.png"
+                class="w-full"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- best service section end -->
+
+    <!-- testimonials section start -->
+    <div
+      class="relative w-full mx-auto max-w-6xl overflow-hidden px-4 py-10 lg:py-0 mb-14"
+    >
+      <!-- Heading -->
+      <div class="text-center mb-8 gap-4 flex flex-col">
+        <h3 class="text-pink-500 text-sm md:text-xl font-semibold uppercase">
+          Testimonials
+        </h3>
+        <h2 class="text-2xl md:text-3xl lg:text-[40px] font-bold">
+          Trust our clients
+        </h2>
+      </div>
+
+      <!-- Carousel wrapper -->
+      <div
+        id="carousel"
+        class="flex transition-transform duration-500 ease-in-out"
+      >
+        <!-- Slide 1 -->
+        <div
+          class="min-w-full flex flex-col items-center text-center px-4 gap-4"
+        >
+          <img
+            src="public/asset/logo/testi.png"
+            alt="Avatar"
+            class="rounded-full border-4 border-yellow-400 mb-4"
+          />
+          <p class="text-lg md:text-2xl font-semibold text-pink-600">
+            Mark Smith
+            <span class="text-black font-normal">/ Travel Enthusiast</span>
+          </p>
+          <div class="text-yellow-400 text-2xl my-2">★★★★★</div>
+          <p class="text-sm text-gray-600 md:text-xl max-w-xs">
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry.
+          </p>
+        </div>
+
+        <!-- Slide 2 -->
+        <div
+          class="min-w-full flex flex-col items-center text-center px-4 gap-4"
+        >
+          <img
+            src="public/asset/logo/testi.png"
+            alt="Avatar"
+            class="rounded-full border-4 border-blue-400 mb-4"
+          />
+          <p class="text-lg md:text-2xl font-semibold text-pink-600">
+            Jane Doe <span class="text-black font-normal">/ Designer</span>
+          </p>
+          <div class="text-yellow-400 text-2xl my-2">★★★★★</div>
+          <p class="text-sm text-gray-600 md:text-xl max-w-xs">
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry.
+          </p>
+        </div>
+
+        <!-- Slide 3 -->
+        <div
+          class="min-w-full flex flex-col items-center text-center px-4 gap-4"
+        >
+          <img
+            src="public/asset/logo/testi.png"
+            alt="Avatar"
+            class="rounded-full border-4 border-red-400 mb-4"
+          />
+          <p class="text-lg md:text-2xl font-semibold text-pink-600">
+            Sahrul
+            <span class="text-black font-normal">/ Front-end Developer</span>
+          </p>
+          <div class="text-yellow-400 text-2xl my-2">★★★★★</div>
+          <p class="text-sm text-gray-600 md:text-xl max-w-xs">
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry.
+          </p>
+        </div>
+      </div>
+
+      <!-- Navigation Arrows -->
+      <button
+        onclick="scrollCarousel(-1)"
+        class="absolute top-1/2 -translate-y-1/2 left-2 md:left-6 bg-ungu text-white shadow p-2 rounded-full z-10 w-10 md:w-15 md:h-15"
+      >
+        ←
+      </button>
+      <button
+        onclick="scrollCarousel(1)"
+        class="absolute top-1/2 -translate-y-1/2 right-2 md:right-6 bg-ungu text-white shadow p-2 rounded-full z-10 w-10 md:w-15 md:h-15"
+      >
+        →
+      </button>
+    </div>
+    <!-- testimonials section end -->
+
+    <!-- subscribe section start -->
+    <section class="mt-16">
+      <div class="container mx-auto">
+        <div
+          class="bg-kuning-muda mx-auto rounded-4xl gap-16 flex flex-col h-[547px] md:h-[572px] lg:h-[670px] justify-center items-center"
+        >
+          <div class="gap-8 flex justify-center items-center flex-col">
+            <h1
+              class="text-lg md:text-2xl font-bold text-pink leading-tight uppercase text-center tracking-wider"
+            >
+              subscribe to our newsletter
+            </h1>
+
+            <p
+              class="text-[32px] md:text-[40px] font-bold text-center leading-tight"
+            >
+              Prepare yourself & let’s explore the beauty of the world
+            </p>
+          </div>
+          <div
+            class="flex flex-col md:flex-row gap-8 lg:gap-10 mb-16 justify-center items-center"
+          >
+            <div
+              class="bg-white w-80 h-[72px] md:w-[402px] lg:w-[757px] md:h-[85px] lg:h-[96px] flex mx-auto gap-4 items-center rounded-4xl"
+            >
+              <div class="text-start ml-7">
+                <img
+                  src="public/asset/icon/mail.png"
+                  alt=""
+                  class="md:w-8 md:h-8"
+                />
+              </div>
+              <p class="md:text-2xl font-bold text-grey">Your Email</p>
+            </div>
+            <div
+              class="bg-ungu w-80 h-[72px] md:w-[202px] md:h-[85px] lg:h-[96px] flex mx-auto gap-4 items-center justify-center rounded-4xl"
+            >
+              <p
+                class="text-center md:text-2xl text-white font-bold leading-tight text-base"
+              >
+                Subscribe
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- subscribe section end -->
+
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/ionicons/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script src="script.js"></script>
+  </body>
+</html>

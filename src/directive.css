@@ -1,0 +1,33 @@
+/* font */
+@import url("https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap");
+
+@import "tailwindcss";
+
+@layer base {
+  @font-face {
+    font-family: "Circular STD";
+    src: url("../public/font/CircularStd-Bold.woff") format("woff");
+  }
+
+  html {
+    font-family: "Inter";
+  }
+
+  h1 {
+    font-family: Circular STD;
+  }
+}
+
+@theme {
+  --font-inter: "Inter";
+  --font-circular: "Circular STD";
+
+  --color-ungu: #5d50c6;
+  --color-pink: #f85e9f;
+  --color-oren: #ff5722;
+  --color-grey: #222831;
+  --color-kuning-muda: rgba(250, 205, 73, 0.08);
+
+
+  --drop-shadow-sm-shadow: 0px 40px 89px rgba(0, 0, 0, 0.1);
+}
